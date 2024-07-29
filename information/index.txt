@@ -1,0 +1,70 @@
+client ->React
+to
+server ->Express
+by 
+mongoDB
+
+
+*   -nodejs
+    -npm package
+    -express,mongoose etc
+    -basic expresss server
+    -basic route (/)>static response
+    -Route (/signup,/signin,/userinfo)
+    -controllers
+    -schema
+    -Database connection
+    -JWT token
+
+*   -npm init
+    -npm install express cookie-parser bcrypt mongoose jsonwebtoken cors email-validator dotenv --save
+    -npm install nodemon --save
+
+
+* 1  Router (/signup, POST ,signup())
+  2  Controller (signup())
+  3  App.js/api/auth>authRoute
+
+
+* DATABASE connection
+  1  using mongoose
+  
+
+* .env 
+   -Environment variables are used to store sensitive data such as passwords, API credentials,
+    and other information that should not be written directly in code  
+  -Use descriptive names
+  -Use uppercase letter
+  -Don't commit .env file to version control.
+
+* schema (model for website)
+
+*email + passwords > verify > token > cookie 
+
+*JWT token are having three part:
+           - algorithm
+           - data
+           - secret key 
+
+   -/signup
+   -/signin
+   -/user
+   -logout
+
+
+* frontend is running on different port 
+  and the backend means server is running on different port
+
+* It show error when we give input for frontend because of having both on different port.
+
+* CORS => Cross-Origin Resource Sharing 
+   CORS is an HTTP-header based mechanism that allows a server to indicate any origins (domain,scheme, or port)other than its own from which a browser
+   should permit loading resources.
+
+   how does it work?
+   -browser give preflight request 
+   preflight request might look like this:
+   OPTIONS ,HOST,ORIGIN,Access-Control-Request-Method:GET,Access-Control-Request-Headers:authorization
+
+  why facing error?
+  -we not set access-cotrol-allow-origin
