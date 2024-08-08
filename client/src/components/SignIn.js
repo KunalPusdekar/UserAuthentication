@@ -18,7 +18,10 @@ function SignIn() {
         method: "post",
         url: `${URL}/api/signin`,
         withCredentials: true,
-        data: credentials
+        data: credentials,
+        headers: {
+          'Content-Type': 'application/json' // Ensure proper content type
+        }
       });
       if (response.data.success) {
         navigate("/");
