@@ -15,11 +15,20 @@ app.use(cookieParser());  //using before going to the Router
 
 //application level OR  we also give it on route level
 
+const config = {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+    }
+  };
 //we
+
 app.use(cors({
     origin:process.env.CLIENT_URL,
     credentials:true
 }))
+console.log('CLIENT_URL:', process.env.CLIENT_URL);
+
 app.use('/api',authRouter);
 
 app.use('/',(req,res)=>{
@@ -27,3 +36,4 @@ app.use('/',(req,res)=>{
 })
 
 module.exports =app;
+

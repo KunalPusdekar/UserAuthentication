@@ -19,11 +19,11 @@ function SignUp() {
     try {
       const response = await axios({
         method: "post",
-        url: URL + "/api/signup",
+        url: `${URL}/api/signup`,
         withCredentials: true,
         data: userData
       });
-
+     
       // the withCredentials property to 'true'. This tells the browser to include any cookies associated with the current domain in the request.
       if (response.data.success) {
         navigate("/signin");

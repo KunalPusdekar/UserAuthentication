@@ -8,6 +8,7 @@ function SignIn() {
   const [loading, setLoading] = useState(false);
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const URL = process.env.REACT_APP_URL;
+  console.log("API URL:", URL);
 
   async function handleSignIn(e) {
     e.preventDefault(); // event.preventDefault() method to prevent the default behavior of an HTML form submission
@@ -15,7 +16,7 @@ function SignIn() {
     try {
       const response = await axios({
         method: "post",
-        url: URL + "/api/signin",
+        url: `${URL}/api/signin`,
         withCredentials: true,
         data: credentials
       });
