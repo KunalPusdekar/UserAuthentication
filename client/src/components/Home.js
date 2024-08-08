@@ -5,13 +5,15 @@ import { useNavigate } from "react-router-dom";
 function Home() {
   const [loading, setLoading] = useState(false);
   const [logoutLoading, setLogoutloading] = useState(false);
-  const [userData, setUserData] = useState(false);
+  const [userData, setUserData] = useState(null);
+  const [manifestData , setManifestData] = useState(null);
   const navigate = useNavigate();
 
   const URL = process.env.REACT_APP_URL;
 
   useEffect(() => {
     getUser();
+    fetchManifest();
   }, []);
 
   async function getUser() {
@@ -33,7 +35,22 @@ function Home() {
       setLoading(false);
     }
   }
-
+  async function fetchManifest() {
+    try {
+      const response = await axios.get(
+        "https://user-authentication-ghvd1qb0u-kunal-pusdekars-projects.vercel.app/manifest.json",
+        {
+          headers: {
+            'Authorization': 'Bearer YOUR_TOKEN_HERE', // Replace with your token
+            'Content-Type': 'application/json'
+          },
+        }
+      );
+      setManifestData(response.data);
+    } catch (error) {
+      console.error("Error fetching manifest:", error);
+    }
+  }
   async function handleLogout() {
     setLogoutloading(true);
     try {
