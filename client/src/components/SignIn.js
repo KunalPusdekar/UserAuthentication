@@ -23,10 +23,12 @@ function SignIn() {
           'Content-Type': 'application/json' // Ensure proper content type
         }
       });
+      console.log("API Response:", response.data);
       if (response.data.success) {
         navigate("/");
       }
       else{
+        console.log(response.data);
         alert(response.data.message);
       }
       setLoading(false);
