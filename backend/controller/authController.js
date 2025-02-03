@@ -4,65 +4,7 @@ const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const { sendEmail } = require('../utils/sendEmail'); // Utility for sending emails
 
-// Signup function
-// const signup = async (req, res, next) => {
-//     const { name, email, password, confirmPassword } = req.body;
 
-//     if (!name || !email || !password || !confirmPassword) {
-//         return res.status(400).json({
-//             success: false,
-//             message: "All fields are required"
-//         });
-//     }
-
-//     const validEmail = emailValidator.validate(email);
-//     if (!validEmail) {
-//         return res.status(400).json({
-//             success: false,
-//             message: "Please provide a valid email address"
-//         });
-//     }
-
-//     if (password !== confirmPassword) {
-//         return res.status(400).json({
-//             success: false,
-//             message: "Password and confirm password do not match"
-//         });
-//     }
-
-//     try {
-//         const existingUser = await userModel.findOne({ email });
-//         if (existingUser) {
-//             return res.status(400).json({
-//                 success: false,
-//                 message: 'Account already exists with provided email ID',
-//             });
-//         }
-        
-//         const userInfo = new userModel({ name, email, password: password });
-
-//         // Save to database
-//         const result = await userInfo.save();
-//         const token = userInfo.jwtToken(); // Assuming jwtToken method exists in user schema
-
-//         return res.status(200).json({
-//             success: true,
-//             data: result,
-//             token
-//         });
-//     } catch (e) {
-//         if (e.code === 11000) {
-//             return res.status(400).json({
-//                 success: false,
-//                 message: 'Account already exists with provided email ID',
-//             });
-//         }
-//         return res.status(400).json({
-//             success: false,
-//             message: e.message
-//         });
-//     }
-// };
 const signup =  async(req,res,next)=>{
     const {name,email,password, confirmPassword}=req.body;
     console.log(name,email,password,confirmPassword);
